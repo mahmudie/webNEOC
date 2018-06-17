@@ -1,0 +1,800 @@
+﻿@import "site.theme.less";
+@import "site.mixins.less";
+@import "site.administration.less";
+@import "site.basicsamples.less";
+@import "site.membership.less";
+@import "site.northwind.less";
+@import "site.meeting.less";
+@import "site.membership.less";
+@import "site.organization.less";
+@import "site.default.less";
+@import "site.manage.less";
+
+.s-Implementation-IcnDialog {
+    > .size {
+        .widthAndMin(600px);
+        .heightAndMin(730px);
+    }
+
+    .caption {
+        width: 350px;
+        text-align: left;
+    }
+
+    .editor {
+        text-align: right;
+        width: 200px;
+    }
+}
+
+.col-unit-price {
+    background-color: #dae829;
+    color: #1317d1;
+}
+
+.s-Campaign-DailyVaccinationsEditor {
+    .ui-dialog-content {
+        padding: 5px;
+    }
+
+    .grid-container {
+        height: 460px;
+    }
+}
+
+.s-Implementation-VitaminAVaccinationsEditor {
+    .ui-dialog-content {
+        padding: 5px;
+    }
+
+    .grid-container {
+        height: 460px;
+    }
+}
+
+.s-ProductPickerDialog {
+    .ui-dialog-content {
+        padding: 8px;
+    }
+
+    .grid-container {
+        height: 400px;
+    }
+}
+
+.category-links {
+    background: #3C8DBC !important;
+}
+
+.s-Campaign-CampaignDialog {
+    > .size {
+        width: 650px;
+    }
+
+    .caption {
+        width: 150px;
+    }
+
+    .field.VaccinationList {
+        min-height: 500px;
+    }
+}
+
+
+.s-Campaign-DailyVaccinationsDialog {
+    > .size {
+        .widthAndMin(100%);
+        .heightAndMin(630px);
+    }
+
+    .caption {
+        width: 350px;
+        text-align: left;
+    }
+
+    @media (min-width: 850px) {
+        .field.ProvinceId, .field.DistrictId, .field.ClusterId, .field.TargetU5Case {
+            flex: auto;
+            min-width: 50%;
+        }
+
+        .field.D1VialDist, .field.D1VialUse, .field.D1Vac011Months, .field.D1Vac1259months, .field.D1RecAbsChildren,
+        .field.D1VacAbsChildren, .field.D1RecNewbornSsc, .field.D1VacNewbornSsc, .field.D1RecRefusedChildren, .field.D1RevacRefusedChildren,
+        .field.D1AfpCase,
+        .field.D2VialDist, .field.D2VialUse, .field.D2Vac011Months, .field.D2Vac1259months, .field.D2RecAbsChildren,
+        .field.D2VacAbsChildren, .field.D2RecNewbornSsc, .field.D2VacNewbornSsc, .field.D2RecRefusedChildren, .field.D2RevacRefusedChildren,
+        .field.D2AfpCase,
+        .field.D3VialDist, .field.D3VialUse, .field.D3Vac011Months, .field.D3Vac1259months, .field.D3RecAbsChildren,
+        .field.D3VacAbsChildren, .field.D3RecNewbornSsc, .field.D3VacNewbornSsc, .field.D3RecRefusedChildren, .field.D3RevacRefusedChildren,
+        .field.D3AfpCase,
+        .field.D5VialDist, .field.D5VialUse, .field.D5Vac011Months, .field.D5Vac1259months, .field.D5RecAbsChildren,
+        .field.D5VacAbsChildren, .field.D5RecNewbornSsc, .field.D5VacNewbornSsc, .field.D5RecRefusedChildren, .field.D5RevacRefusedChildren,
+        .field.D5AfpCase {
+            flex: auto;
+            min-width: 50%;
+            text-align: right;
+
+            .caption {
+                width: 250px;
+            }
+
+            .editor {
+                text-align: right;
+            }
+        }
+    }
+}
+
+.s-Campaign-CampaignDayDialog {
+
+    @media (min-width: 1000px) {
+        .field.RoundId, .field.ProvinceId, .field.DistrictId, .field.DateOfCampaign, .field.PemtremtManager {
+            flex: auto;
+            min-width: 33%;
+        }
+    }
+
+    .caption {
+        width: 150px;
+        text-align: left;
+    }
+}
+
+
+.s-Locations-ClusterDialog {
+    > .size {
+        width: 650px;
+        height: 650px;
+    }
+
+    .caption {
+        width: 150px;
+    }
+}
+
+
+.s-Locations-ClusterPickerDialog {
+    > .size {
+        height: 670px;
+    }
+
+    .caption {
+        width: 150px;
+    }
+
+    .editor {
+        text-align: right;
+    }
+
+    .ui-dialog-content {
+        padding: 8px;
+    }
+
+    .grid-container {
+        height: 600px;
+    }
+}
+
+.s-Locations-DistrictDialog {
+    > .size {
+        width: 650px;
+    }
+
+    .caption {
+        width: 150px;
+    }
+}
+
+.s-Locations-ProvinceDialog {
+    > .size {
+        width: 650px;
+    }
+
+    .caption {
+        width: 150px;
+    }
+}
+
+.s-Locations-RegionDialog {
+    > .size {
+        width: 650px;
+    }
+
+    .caption {
+        width: 150px;
+    }
+}
+
+
+
+.s-Implementation-IcmTeamDialog {
+    > .size {
+        .widthAndMin(850px);
+        .heightAndMin(550px);
+    }
+
+    .caption {
+        width: 650px;
+        text-align: left;
+    }
+}
+
+
+.s-Lookup-InAcsCategoryDialog {
+    > .size {
+        width: 650px;
+    }
+
+    .caption {
+        width: 150px;
+    }
+}
+
+.s-PostCampaign-LQASDialog {
+    > .size {
+        width: 650px;
+    }
+
+    .caption {
+        width: 150px;
+    }
+}
+
+.s-Implementation-MobileTeamDialog {
+    > .size {
+        width: 650px;
+    }
+
+    .caption {
+        width: 250px;
+        text-align: left;
+    }
+
+    @media (min-width: 1000px) {
+        .field.CampaignId, .field.DistrictId, .field.DateFrom, .field.DateTo, .field.DateOfCampaign {
+            flex: auto;
+            min-width: 35%;
+
+            .editor {
+                text-align: right;
+                width: 100px;
+            }
+        }
+
+        .field.Nomads, .field.Gypsis, .field.BlueMosque, .field.BusStation, .field.CheckPost,
+        .field.IDPs, .field.Madrasa, .field.School, .field.Kindergarden, .field.Prison,
+        .field.Daramsal, .field.Crosborder, .field.Returnees, .field.EPICenters, .field.MobileTeams,
+        .field.PrivateClinics, .field.HotelGuestHouses, .field.Others {
+            flex: auto;
+            min-width: 33%;
+
+            .caption {
+                width: 150px;
+            }
+
+            .editor {
+                text-align: right;
+                width: 100px;
+            }
+        }
+    }
+}
+
+.s-Campaign-DailyVaccinationsEditorDialog {
+    > .size {
+        .widthAndMin(1000px);
+        .heightAndMin(630px);
+    }
+
+    .caption {
+        width: 350px;
+        text-align: left;
+    }
+
+    @media (min-width: 1000px) {
+        .field.ProvinceId, .field.DistrictId, .field.ClusterId, .field.TargetU5Case {
+            flex: auto;
+            min-width: 25%;
+        }
+
+        .field.D1VialDist, .field.D1VialUse, .field.D1Vac011Months, .field.D1Vac1259months, .field.D1RecAbsChildren,
+        .field.D1VacAbsChildren, .field.D1RecNewbornSsc, .field.D1VacNewbornSsc, .field.D1RecRefusedChildren, .field.D1RevacRefusedChildren,
+        .field.D1AfpCase,
+        .field.D2VialDist, .field.D2VialUse, .field.D2Vac011Months, .field.D2Vac1259months, .field.D2RecAbsChildren,
+        .field.D2VacAbsChildren, .field.D2RecNewbornSsc, .field.D2VacNewbornSsc, .field.D2RecRefusedChildren, .field.D2RevacRefusedChildren,
+        .field.D2AfpCase,
+        .field.D3VialDist, .field.D3VialUse, .field.D3Vac011Months, .field.D3Vac1259months, .field.D3RecAbsChildren,
+        .field.D3VacAbsChildren, .field.D3RecNewbornSsc, .field.D3VacNewbornSsc, .field.D3RecRefusedChildren, .field.D3RevacRefusedChildren,
+        .field.D3AfpCase,
+        .field.D5VialDist, .field.D5VialUse, .field.D5Vac011Months, .field.D5Vac1259months, .field.D5RecAbsChildren,
+        .field.D5VacAbsChildren, .field.D5RecNewbornSsc, .field.D5VacNewbornSsc, .field.D5RecRefusedChildren, .field.D5RevacRefusedChildren,
+        .field.D5AfpCase {
+            flex: auto;
+            min-width: 25%;
+            text-align: center;
+
+            .caption {
+                width: 570px;
+            }
+
+            .editor {
+                text-align: center;
+            }
+        }
+    }
+}
+
+
+.s-Lookup-PartDialog {
+    > .size {
+        width: 650px;
+    }
+
+    .caption {
+        width: 150px;
+    }
+}
+
+.s-Lookup-RoundDialog {
+    > .size {
+        width: 650px;
+    }
+
+    .caption {
+        width: 150px;
+    }
+}
+
+.s-Lookup-StatusDialog {
+    > .size {
+        width: 650px;
+    }
+
+    .caption {
+        width: 150px;
+    }
+}
+
+.s-Implementation-VitaminADialog {
+
+    @media (min-width: 1000px) {
+        .field.RoundId, .field.ProvinceId, .field.DistrictId, .field.DateOfCampaign, .field.PemtremtManager {
+            flex: auto;
+            min-width: 33%;
+        }
+    }
+
+    .caption {
+        width: 150px;
+        text-align: left;
+    }
+
+    .field.VitaminAVaccinations {
+        min-height: 500px;
+    }
+}
+
+
+.s-Lookup-ClusterLevelDialog {
+    > .size {
+        width: 650px;
+    }
+
+    .caption {
+        width: 150px;
+    }
+}
+
+
+.s-Lookup-CampaignTypeDialog {
+    > .size {
+        width: 550px;
+    }
+
+    .caption {
+        width: 200px;
+        text-align: left;
+    }
+}
+
+
+
+.s-Lookup-InAcsCategoryDialog {
+    > .size {
+        width: 650px;
+    }
+
+    .caption {
+        width: 150px;
+    }
+}
+
+.s-PostCampaign-LQASDialog {
+    > .size {
+        width: 650px;
+    }
+
+    .caption {
+        width: 150px;
+    }
+}
+
+.s-Preparation-MicroplanDialog {
+    > .size {
+        .widthAndMin(550px);
+        .heightAndMin(580px);
+    }
+
+    .caption {
+        width: 300px;
+        text-align: left;
+    }
+}
+
+.s-PostCampaign-OutOfHouseSurveyDialog {
+    > .size {
+        width: 600px;
+    }
+
+    .caption {
+        width: 350px;
+        text-align: left;
+    }
+}
+
+.s-Lookup-PartDialog {
+    > .size {
+        width: 650px;
+    }
+
+    .caption {
+        width: 150px;
+    }
+}
+
+.s-PostCampaign-PcmDialog {
+    > .size {
+        .widthAndMin(650px);
+        .heightAndMin(600px);
+    }
+
+    .caption {
+        width: 350px;
+        text-align: left
+    }
+}
+
+
+.s-Lookup-ClusterLevelDialog {
+    > .size {
+        width: 650px;
+    }
+
+    .caption {
+        width: 150px;
+    }
+}
+
+.s-Lookup-CampaignTypeDialog {
+    > .size {
+        width: 650px;
+    }
+
+    .caption {
+        width: 100px;
+    }
+}
+
+.s-Implementation-IcmHouseholdDialog {
+    > .size {
+        .widthAndMin(650px);
+        .heightAndMin(550px);
+    }
+
+    .caption {
+        width: 350px;
+        text-align: left
+    }
+}
+
+
+
+.s-Preparation-InAccessibleDialog {
+    > .size {
+        .widthAndMin(550px);
+        .heightAndMin(580px);
+    }
+
+    .caption {
+        width: 250px;
+        text-align: left;
+    }
+}
+
+.s-Lookup-InAcsCategoryDialog {
+    > .size {
+        .widthAndMin(550px);
+        .heightAndMin(580px);
+    }
+
+    .caption {
+        width: 150px;
+    }
+}
+
+.s-PostCampaign-LQASDialog {
+    > .size {
+        width: 650px;
+    }
+
+    .caption {
+        width: 150px;
+        text-align: left
+    }
+}
+
+
+
+.s-Lookup-PartDialog {
+    > .size {
+        width: 650px;
+    }
+
+    .caption {
+        width: 150px;
+    }
+}
+
+
+.s-Lookup-RoundDialog {
+    > .size {
+        width: 650px;
+    }
+
+    .caption {
+        width: 150px;
+    }
+}
+
+.s-Implementation-VitaminAVaccinationsDialog {
+    > .size {
+        width: 650px;
+    }
+
+    .caption {
+        width: 350px;
+        text-align: left;
+    }
+}
+
+.s-Implementation-VitaminAVaccinationsEditorDialog {
+    > .size {
+        width: 650px;
+    }
+
+    .caption {
+        width: 350px;
+        text-align: left;
+    }
+}
+
+.s-Implementation-IcmSupervisorDialog {
+    > .size {
+        .widthAndMin(650px);
+        .heightAndMin(600px);
+    }
+
+    .caption {
+        width: 400px;
+        text-align: left
+    }
+}
+
+.s-Lookup-VehicletypeDialog {
+    > .size {
+        width: 650px;
+    }
+
+    .caption {
+        width: 150px;
+    }
+}
+
+
+.s-Imports-TempDistrictDialog {
+    > .size {
+        width: 650px;
+    }
+
+    .caption {
+        width: 150px;
+    }
+}
+
+.s-ExcelImport-TempDistrictDialog {
+    > .size {
+        width: 650px;
+    }
+
+    .caption {
+        width: 150px;
+    }
+}
+
+.s-ExcelImport-TempDistrictDialog {
+    > .size {
+        width: 650px;
+    }
+
+    .caption {
+        width: 150px;
+    }
+}
+
+.s-ExcelImport-TempDistrictDialog {
+    > .size {
+        width: 650px;
+    }
+
+    .caption {
+        width: 150px;
+    }
+}
+
+.s-ImportGate-TempVitaminADialog {
+    > .size {
+        width: 650px;
+    }
+
+    .caption {
+        width: 150px;
+    }
+}
+
+.s-ImportGate-TempVitaminADialog {
+    > .size {
+        width: 650px;
+    }
+
+    .caption {
+        width: 150px;
+    }
+}
+
+.s-ImportGate-TempCampaignDialog {
+    > .size {
+        width: 650px;
+    }
+
+    .caption {
+        width: 150px;
+    }
+}
+
+
+
+.s-Lookup-TargetPopDialog {
+    > .size {
+        width: 650px;
+    }
+
+    .caption {
+        width: 150px;
+    }
+}
+
+.s-CVA-PTTSDialog {
+    > .size {
+        width: 650px;
+    }
+
+    .caption {
+        width: 150px;
+    }
+}
+
+.s-Lookup-MonthsDialog {
+    > .size {
+        width: 650px;
+    }
+
+    .caption {
+        width: 150px;
+    }
+}
+
+.s-Campaign-AdminDataGrid {
+    .slick-header-columns {
+        white-space: normal;
+        height: 65px;
+        border-bottom: 2px solid #ccc;
+    }
+
+    .slick-header-column.ui-state-default {
+        height: 100%;
+    }
+}
+
+.s-Campaign-AdminDataDialog {
+    > .size {
+        .widthAndMin(100%);
+
+        .field.RoundId, .field.ProvinceId, .field.DistrictId, .field.ClusterId, .field.DateOfCampaign, .field.PemtremtManager, .field.TeamNo {
+            .caption {
+                min-width: 50%;
+                text-align: left;
+            }
+
+            .editor {
+                width: 50%;
+                text-align: center;
+            }
+        }
+    }
+
+    .caption {
+        width: 80%;
+        text-align: left;
+    }
+
+    .category {
+        font-weight: bolder;
+    }
+
+    .category-links {
+        background-color: #1F7DCE!important;
+    }
+
+    .category-title {
+        font-weight: bolder;
+    }
+
+    .editor {
+        text-align: center;
+    }
+
+    .editor:focus {
+        background-color: #1F7DCE;
+        color: #ffffff;
+    }
+}
+
+.s-Campaign-AdminDataDialog {
+
+    .field.RoundId, .field.ProvinceId, .field.DistrictId, .field.ClusterId, .field.DateOfCampaign, .field.PemtremtManager, .field.TeamNo {
+        .caption {
+            min-width: 30%;
+            text-align: left;
+        }
+
+        .caption {
+            width: 50%;
+            text-align: left;
+        }
+
+        .editor {
+            text-align: left;
+        }
+
+        .editor:focus {
+            background-color: #1F7DCE;
+            color: #ffffff;
+        }
+    }
+}
+
+.s-Implementation-CommunicationDialog {
+    > .size {
+        .widthAndMin(550px);
+        .heightAndMin(500px);
+        }
+        .caption {
+            width: 50%;
+            text-align: left;
+        }
+
+        .editor {
+            text-align: center;
+        }
+        
+    }

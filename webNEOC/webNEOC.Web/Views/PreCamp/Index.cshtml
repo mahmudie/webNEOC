@@ -1,0 +1,310 @@
+﻿@using Syncfusion.JavaScript
+@using Syncfusion.MVC.EJ
+@using Syncfusion.EJ.Export
+@model webNEOC.Controllers.AdminCoverageData
+
+@{
+    ViewBag.Title = "Administrative coverage";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link href="~/Content/themes/default-theme/ej.web.all.min.css" rel="stylesheet" />
+    <link href="~/Content/themes/default-theme/ej.theme.min.css" rel="stylesheet" />
+    @*<script src="~/Scripts/jquery-1.10.2.min.js"></script>*@
+    <script src="~/Scripts/ej.web.all.min.js"></script>
+    <script src="~/Scripts/ej.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jsrender.min.js"></script>
+    @Html.Script("~/Scripts/adminlte/app.js")
+    <style>
+        .content {
+            margin-top: 0px !important;
+            padding-top: 0px !important;
+        }
+    </style>
+    <script type="text/x-jsrender" id="wStrictCorrdMeeting">
+        <div>
+            <div>
+                <img src="../Content/site/images/pre1.png" width="40" height="20" />
+            </div>
+            <div style="position:relative; top:3px;">
+                District review and planning meeting conducted
+            </div>
+        </div>
+    </script>
+
+    <script type="text/x-jsrender" id="wStrictCorrdMeeting">
+        <div>
+            <div>
+                <img src="../Content/site/images/pre1.png" width="40" height="20" />
+            </div>
+            <div style="position:relative; top:3px;">
+                District review and planning meeting conducted
+            </div>
+        </div>
+    </script>
+    <script type="text/x-jsrender" id="vMicroPlanUpdated">
+        <div>
+            <div>
+                <img src="../Content/site/images/pre1.png" width="40" height="20" />
+            </div>
+            <div style="position:relative; top:3px;">
+                Micro-plan reviewed & updated
+            </div>
+        </div>
+    </script>
+    <script type="text/x-jsrender" id="vUpdateDistrictSupMonPlan">
+        <div>
+            <div>
+                <img src="../Content/site/images/pre1.png" width="40" height="20" />
+            </div>
+            <div style="position:relative; top:3px;">
+                Supervision and monitoring plan updated and shared
+            </div>
+        </div>
+    </script>
+    <script type="text/x-jsrender" id="vSocMobPlanAvail">
+        <div>
+            <div>
+                <img src="../Content/site/images/pre1.png" width="40" height="20" />
+            </div>
+            <div style="position:relative; top:3px;">
+                Social mobilization plan in place and shared
+            </div>
+        </div>
+    </script>
+    <script type="text/x-jsrender" id="vMultiSectPlan">
+        <div>
+            <div>
+                <img src="../Content/site/images/pre1.png" width="40" height="20" />
+            </div>
+            <div style="position:relative; top:3px;">
+                District Governor multi-sectoral meeting on Polio conducted
+            </div>
+        </div>
+    </script>
+    <script type="text/x-jsrender" id="vSIAsSelected">
+        <div>
+            <div>
+                <img src="../Content/site/images/pre1.png" width="40" height="20" />
+            </div>
+            <div style="position:relative; top:3px;">
+                SIAs service providers selected  by selection committee
+            </div>
+        </div>
+    </script>
+
+    <script type="text/x-jsrender" id="vPercFLWPaid">
+        <div>
+            <div>
+                <img src="../Content/site/images/pre2.png" width="40" height="20" />
+            </div>
+            <div style="position:relative; top:3px;">
+                % FLWs(operation) paid for the last campaign
+            </div>
+        </div>
+    </script>
+    <script type="text/x-jsrender" id="vPercSocFLWPaid">
+        <div>
+            <div>
+                <img src="../Content/site/images/pre2.png" width="40" height="20" />
+            </div>
+            <div style="position:relative; top:3px;">
+                % FLWs(social mobilisers) paid for the last campaign
+            </div>
+        </div>
+    </script>
+    <script type="text/x-jsrender" id="vPercVolTrained">
+        <div>
+            <div>
+                <img src="../Content/site/images/pre2.png" width="40" height="20" />
+            </div>
+            <div style="position:relative; top:3px;">
+                % of volunteers attended training sessions
+            </div>
+        </div>
+    </script>
+    <script type="text/x-jsrender" id="vFLWsPlanUpdated">
+        <div>
+            <div>
+                <img src="../Content/site/images/pre2.png" width="40" height="20" />
+            </div>
+            <div style="position:relative; top:3px;">
+                FLWs training plan updated and Implemented
+            </div>
+        </div>
+    </script>
+    <script type="text/x-jsrender" id="vIECMatDisplayed">
+        <div>
+            <div>
+                <img src="../Content/site/images/pre2.png" width="40" height="20" />
+            </div>
+            <div style="position:relative; top:3px;">
+                IEC materials displayed
+            </div>
+        </div>
+    </script>
+    <script type="text/x-jsrender" id="vOPVrec">
+        <div>
+            <div>
+                <img src="../Content/site/images/pre3.png" width="40" height="20" />
+            </div>
+            <div style="position:relative; top:3px;">
+                Vaccine arrived at the district
+            </div>
+        </div>
+    </script>
+</head>
+<body style="height:100%">
+    <h3><b>@*PRE-CAMPAIGN DASHBOARD*@  </b></h3>
+    <script id="Title" type="text/x-jsrender">
+        <label> TreeGrid Exporting</label>
+    </script>
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="/PreCamp">Pre-Campaign</a></li>
+        <li><a href="/IntraCamp">Intra-Campaign</a></li>
+        <li><a href="/Regional">Administrative Coverage</a></li>
+    </ul>
+    <div style="height:760px!important;width:100%;overflow:auto">
+
+        @Html.AntiForgeryToken()
+        @(Html.EJ().TreeGrid("TreeGridContainer")
+                         .HeaderTextOverflow(TreeGridHeaderTextOverflow.Wrap)
+                         .TreeColumnIndex(1)
+                         .AllowSorting(true)
+                         .AllowSelection(true)
+                         .AllowColumnReordering(true)
+                         .AllowColumnResize(true)
+                         .AllowMultiSorting(true)
+                         .FilterSettings(filter => { filter.FilterType(TreeGridFilterType.Excel); })
+                         .ClientSideEvents(cs => cs.ToolbarClick("toolbarClick"))
+                         .IsResponsive(true)
+                         .IdMapping("Id")
+                         .AllowFiltering(true)
+                         .ParentIdMapping("ParentId")
+                        .Columns(co =>
+                        {
+                            co.Field("Region").HeaderText("Region").Width(100).AllowFiltering(true).Add();
+                            co.Field("Province").HeaderText("Province").Width(120).AllowFiltering(true).Add();
+                            co.Field("District").HeaderText("District").Width(100).AllowFiltering(true).Add();
+                            co.Field("Round").HeaderText("Round").Width(150).AllowFiltering(true).Add();
+                            co.Field("LPDs").HeaderText("LPDs").Width(80).AllowFiltering(true).Add();
+                            co.Field("Year").HeaderText("Year").Width(80).AllowFiltering(true).Add();
+                            co.Field("StrictCorrdMeeting").Width(140).HeaderTemplateID("#wStrictCorrdMeeting").Add();
+                            co.Field("MicroPlanUpdated").Width(120).AllowFiltering(true).HeaderTemplateID("#vMicroPlanUpdated").Add();
+                            co.Field("UpdateDistrictSupMonPlan").Width(140).AllowFiltering(true).HeaderTemplateID("#vUpdateDistrictSupMonPlan").Add();
+                            co.Field("SocMobPlanAvail").Width(140).AllowFiltering(true).HeaderTemplateID("#vSocMobPlanAvail").Add();
+                            co.Field("MultiSectPlan").Width(140).AllowFiltering(true).HeaderTemplateID("#vMultiSectPlan").Add();
+                            co.Field("SIAsSelected").Width(140).AllowFiltering(true).HeaderTemplateID("#vSIAsSelected").Add();
+                            co.Field("PercFLWPaid").Width(140).AllowFiltering(true).HeaderTemplateID("#vPercFLWPaid").Add();
+                            co.Field("PercSocFLWPaid").Width(140).AllowFiltering(true).HeaderTemplateID("#vPercSocFLWPaid").Add();
+                            co.Field("PercVolTrained").Width(140).AllowFiltering(true).HeaderTemplateID("#vPercVolTrained").Add();
+                            co.Field("FLWsPlanUpdated").Width(140).AllowFiltering(true).HeaderTemplateID("#vFLWsPlanUpdated").Add();
+                            co.Field("IECMatDisplayed").Width(100).AllowFiltering(true).HeaderTemplateID("#vIECMatDisplayed").Add();
+                            co.Field("OPVRec").Width(100).AllowFiltering(true).HeaderTemplateID("#vOPVrec").Add();
+
+                        }
+
+                        )
+                        .ToolbarSettings(tool =>
+                        {
+                            tool.ShowToolbar(true);
+                            tool.ToolbarItems(new List<TreeGridToolBarItems>()
+                            {
+                        TreeGridToolBarItems.ExcelExport,
+                        TreeGridToolBarItems.Search,
+                            });
+                            tool.CustomToolbarItems(ct =>
+                            {
+                                ct.TemplateID("#Title").TooltipText("Title").Add();
+                            });
+                        })
+                            .ClientSideEvents(cs => cs.ToolbarClick("toolbarClick"))
+                            .ShowColumnChooser(false)
+                            .ShowColumnOptions(false)
+                //        .ColumnDialogFields(new List<TreeGridColumnDialogFields>()
+                //{
+                //    TreeGridColumnDialogFields.Field,
+                //    TreeGridColumnDialogFields.HeaderText,
+                //    TreeGridColumnDialogFields.EditType,
+                //    TreeGridColumnDialogFields.Visible,
+                //    TreeGridColumnDialogFields.Width,
+                //    TreeGridColumnDialogFields.TextAlign,
+                //    TreeGridColumnDialogFields.ShowInColumnChooser
+                //})
+                .Mappers(map => map.ExportToPdfAction("http://180.94.89.89:80/PreCamp/ExportToPdf").ExportToExcelAction("http://180.94.89.89:80/PreCamp/ExportToExcel"))
+                                .ToolbarSettings(tool =>
+                                {
+                                    tool.ShowToolbar(true);
+                                    tool.ToolbarItems(new List<TreeGridToolBarItems>()
+                            {
+                                TreeGridToolBarItems.ExcelExport,
+                            });
+                                })
+                                .ClientSideEvents(ee =>
+                                {
+                                    ee.QueryCellInfo("queryCellInfo");
+                                    ee.Load("load");
+                                })
+                        .SizeSettings(ss => ss.Width("100%").Height("100%"))
+                        .Datasource(ViewBag.datasource)
+
+
+        )
+    </div>
+    @(Html.EJ().ScriptManager())
+    <script>
+        function queryCellInfo(args) {
+            if (args.column.field != 'Id' && args.column.field != 'Year' && args.column.field != 'Region' && args.column.field != 'Province' && args.column.field != 'District' && args.column.field != 'Round' && args.column.field != 'LPDs') {
+                if (args.data[args.column.field] > 0 && args.data[args.column.field] < 80) {
+                    $(args.cellElement).css({ 'background-color': '#ff3300' });
+                }
+                if (args.data[args.column.field] > 80 && args.data[args.column.field] < 90) {
+                    $(args.cellElement).css({ 'background-color': '#ffff00' });
+                }
+                if (args.data[args.column.field] >= 90) {
+                    $(args.cellElement).css({ 'background-color': '#00cc00' });
+                }
+            }
+            if (args.column.field != 'Id' && args.column.field != 'Year' && args.column.field != 'Region' && args.column.field != 'Province' && args.column.field != 'District' && args.column.field != 'Round' && args.column.field != 'LPDs' && args.column.field != 'PercVolTrained' && args.column.field != 'PercSocFLWPaid' && args.column.field != 'PercFLWPaid') {
+                if (args.data[args.column.field] == 'Yes') {
+                    $(args.cellElement).css({ 'background-color': '#00cc00' });
+                }
+                if (args.data[args.column.field] == 'No') {
+                    $(args.cellElement).css({ 'background-color': '#ff3300' });
+                }
+                if (args.data[args.column.field] == '') {
+                    $(args.cellElement).css({ 'background-color': '#e0e0d1' });
+                }
+            }
+            function load(args) {
+                args.model.columnDialogFields = ['field', 'headerText', 'editType', 'visible', 'width', 'textAlign', 'showInColumnChooser']; //Declare columnDialogField in load event
+
+            }
+        }
+        function toolbarClick(args) {
+
+            if (args.itemName == "Excel Export") {
+
+                var modelClone = this._getExportModel(this.model); // Clone TreeGrid model
+
+                var attr = { action: "/PreCamp/ExportToExcel", method: 'post', "data-ajax": "false" };
+                $('form#' + this._id + 'export').remove();
+                var form = ej.buildTag('form#' + this._id + 'export', "", null, attr);
+                var token = $('input[name="__RequestVerificationToken"]').val();
+                var inputAttr = { name: 'TreeGridModel', type: 'hidden', value: JSON.stringify(modelClone) };
+                var input = ej.buildTag('input', "", null, inputAttr);
+                var tokenInput = ej.buildTag('input', "", null, { name: "__RequestVerificationToken", type: "hidden", value: token });
+                form.append(input);
+
+                form.append(tokenInput);  // append token input element
+                form.append(this);
+                $('body').append(form);
+                form.submit();
+            }
+            args.cancel = true;
+        }
+    </script>
+</body>
+</html>

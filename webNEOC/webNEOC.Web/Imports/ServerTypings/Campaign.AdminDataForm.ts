@@ -1,0 +1,112 @@
+﻿namespace webNEOC.Campaign {
+    export class AdminDataForm extends Serenity.PrefixedContext {
+        static formKey = 'Campaign.AdminData';
+
+    }
+
+    export interface AdminDataForm {
+        RoundId: Serenity.IntegerEditor;
+        DistrictId: Serenity.IntegerEditor;
+        ClusterId: Serenity.StringEditor;
+        DateOfCampaign: Serenity.DateEditor;
+        PemtremtManager: Serenity.StringEditor;
+        TeamNo: Serenity.StringEditor;
+        D1VialsRecieved: Serenity.IntegerEditor;
+        D1VialsReturned: Serenity.IntegerEditor;
+        D1VaccByTransit: Serenity.IntegerEditor;
+        D1NoOfHhsVisited: Serenity.IntegerEditor;
+        D1Ch05resident: Serenity.IntegerEditor;
+        D1Ch05guest: Serenity.IntegerEditor;
+        D1Ch05VaccInHouse: Serenity.IntegerEditor;
+        D1Ch05VaccOutHouse: Serenity.IntegerEditor;
+        D1Ch05NomadVacc: Serenity.IntegerEditor;
+        D1AbsentRecordDuring: Serenity.IntegerEditor;
+        D1AbsentFoundVaccDuring: Serenity.IntegerEditor;
+        D1AbsentVaccDuring: Serenity.IntegerEditor;
+        D1AbsentRemainDuring: Serenity.IntegerEditor;
+        D1AbsentRecordAfter: Serenity.IntegerEditor;
+        D1AbsentFoundVaccAfter: Serenity.IntegerEditor;
+        D1AbsentVaccAfter: Serenity.IntegerEditor;
+        D1AbsentRemainAfter: Serenity.IntegerEditor;
+        D1NssRecord: Serenity.IntegerEditor;
+        D1NssFoundVacc: Serenity.IntegerEditor;
+        D1NssVaccinated: Serenity.IntegerEditor;
+        D1NssReamining: Serenity.IntegerEditor;
+        D1RefusalRecord: Serenity.IntegerEditor;
+        D1RefusalFoundVacc: Serenity.IntegerEditor;
+        D1RefusalVacc: Serenity.IntegerEditor;
+        D1RefusalRemaining: Serenity.IntegerEditor;
+        D2VialsRecieved: Serenity.IntegerEditor;
+        D2VialsReturned: Serenity.IntegerEditor;
+        D2VaccByTransit: Serenity.IntegerEditor;
+        D2NoOfHhsVisited: Serenity.IntegerEditor;
+        D2Ch05resident: Serenity.IntegerEditor;
+        D2Ch05guest: Serenity.IntegerEditor;
+        D2Ch05VaccInHouse: Serenity.IntegerEditor;
+        D2Ch05VaccOutHouse: Serenity.IntegerEditor;
+        D2Ch05NomadVacc: Serenity.IntegerEditor;
+        D2AbsentRecordDuring: Serenity.IntegerEditor;
+        D2AbsentFoundVaccDuring: Serenity.IntegerEditor;
+        D2AbsentVaccDuring: Serenity.IntegerEditor;
+        D2AbsentRemainDuring: Serenity.IntegerEditor;
+        D2AbsentRecordAfter: Serenity.IntegerEditor;
+        D2AbsentFoundVaccAfter: Serenity.IntegerEditor;
+        D2AbsentVaccAfter: Serenity.IntegerEditor;
+        D2AbsentRemainAfter: Serenity.IntegerEditor;
+        D2NssRecord: Serenity.IntegerEditor;
+        D2NssFoundVacc: Serenity.IntegerEditor;
+        D2NssVaccinated: Serenity.IntegerEditor;
+        D2NssReamining: Serenity.IntegerEditor;
+        D2RefusalRecord: Serenity.IntegerEditor;
+        D2RefusalFoundVacc: Serenity.IntegerEditor;
+        D2RefusalVacc: Serenity.IntegerEditor;
+        D2RefusalRemaining: Serenity.IntegerEditor;
+        D3VialsRecieved: Serenity.IntegerEditor;
+        D3VialsReturned: Serenity.IntegerEditor;
+        D3VaccByTransit: Serenity.IntegerEditor;
+        D3NoOfHhsVisited: Serenity.IntegerEditor;
+        D3Ch05resident: Serenity.IntegerEditor;
+        D3Ch05guest: Serenity.IntegerEditor;
+        D3Ch05VaccInHouse: Serenity.IntegerEditor;
+        D3Ch05VaccOutHouse: Serenity.IntegerEditor;
+        D3Ch05NomadVacc: Serenity.IntegerEditor;
+        D3AbsentRecordDuring: Serenity.IntegerEditor;
+        D3AbsentFoundVaccDuring: Serenity.IntegerEditor;
+        D3AbsentVaccDuring: Serenity.IntegerEditor;
+        D3AbsentRemainDuring: Serenity.IntegerEditor;
+        D3AbsentRecordAfter: Serenity.IntegerEditor;
+        D3AbsentFoundVaccAfter: Serenity.IntegerEditor;
+        D3AbsentVaccAfter: Serenity.IntegerEditor;
+        D3AbsentRemainAfter: Serenity.IntegerEditor;
+        D3NssRecord: Serenity.IntegerEditor;
+        D3NssFoundVacc: Serenity.IntegerEditor;
+        D3NssVaccinated: Serenity.IntegerEditor;
+        D3NssReamining: Serenity.IntegerEditor;
+        D3RefusalRecord: Serenity.IntegerEditor;
+        D3RefusalFoundVacc: Serenity.IntegerEditor;
+        D3RefusalVacc: Serenity.IntegerEditor;
+        D3RefusalRemaining: Serenity.IntegerEditor;
+        D5VialsRecieved: Serenity.IntegerEditor;
+        D5VialsReturned: Serenity.IntegerEditor;
+        D5RemainAbsentDuring: Serenity.IntegerEditor;
+        D5AbsentFoundVaccDuring5: Serenity.IntegerEditor;
+        D5AbsentVaccDuring5: Serenity.IntegerEditor;
+        D5AbsentRemainDuring5: Serenity.IntegerEditor;
+        D5RemainAbsentAfter: Serenity.IntegerEditor;
+        D5AbsentFoundVaccAfter5: Serenity.IntegerEditor;
+        D5AbsentVaccAfter5: Serenity.IntegerEditor;
+        D5AbsentRemainAfter5: Serenity.IntegerEditor;
+        D5RemainNss: Serenity.IntegerEditor;
+        D5FoundVaccNss5: Serenity.IntegerEditor;
+        D5VaccNss5: Serenity.IntegerEditor;
+        D5RemainNss5: Serenity.IntegerEditor;
+        D5RemainRefusal: Serenity.IntegerEditor;
+        D5FoundVaccRefusal5: Serenity.IntegerEditor;
+        D5VaccRefusal5: Serenity.IntegerEditor;
+        D5RemainRefusal5: Serenity.IntegerEditor;
+        D5VaccOutofHouse: Serenity.IntegerEditor;
+    }
+
+    [['RoundId', () => Serenity.IntegerEditor], ['DistrictId', () => Serenity.IntegerEditor], ['ClusterId', () => Serenity.StringEditor], ['DateOfCampaign', () => Serenity.DateEditor], ['PemtremtManager', () => Serenity.StringEditor], ['TeamNo', () => Serenity.StringEditor], ['D1VialsRecieved', () => Serenity.IntegerEditor], ['D1VialsReturned', () => Serenity.IntegerEditor], ['D1VaccByTransit', () => Serenity.IntegerEditor], ['D1NoOfHhsVisited', () => Serenity.IntegerEditor], ['D1Ch05resident', () => Serenity.IntegerEditor], ['D1Ch05guest', () => Serenity.IntegerEditor], ['D1Ch05VaccInHouse', () => Serenity.IntegerEditor], ['D1Ch05VaccOutHouse', () => Serenity.IntegerEditor], ['D1Ch05NomadVacc', () => Serenity.IntegerEditor], ['D1AbsentRecordDuring', () => Serenity.IntegerEditor], ['D1AbsentFoundVaccDuring', () => Serenity.IntegerEditor], ['D1AbsentVaccDuring', () => Serenity.IntegerEditor], ['D1AbsentRemainDuring', () => Serenity.IntegerEditor], ['D1AbsentRecordAfter', () => Serenity.IntegerEditor], ['D1AbsentFoundVaccAfter', () => Serenity.IntegerEditor], ['D1AbsentVaccAfter', () => Serenity.IntegerEditor], ['D1AbsentRemainAfter', () => Serenity.IntegerEditor], ['D1NssRecord', () => Serenity.IntegerEditor], ['D1NssFoundVacc', () => Serenity.IntegerEditor], ['D1NssVaccinated', () => Serenity.IntegerEditor], ['D1NssReamining', () => Serenity.IntegerEditor], ['D1RefusalRecord', () => Serenity.IntegerEditor], ['D1RefusalFoundVacc', () => Serenity.IntegerEditor], ['D1RefusalVacc', () => Serenity.IntegerEditor], ['D1RefusalRemaining', () => Serenity.IntegerEditor], ['D2VialsRecieved', () => Serenity.IntegerEditor], ['D2VialsReturned', () => Serenity.IntegerEditor], ['D2VaccByTransit', () => Serenity.IntegerEditor], ['D2NoOfHhsVisited', () => Serenity.IntegerEditor], ['D2Ch05resident', () => Serenity.IntegerEditor], ['D2Ch05guest', () => Serenity.IntegerEditor], ['D2Ch05VaccInHouse', () => Serenity.IntegerEditor], ['D2Ch05VaccOutHouse', () => Serenity.IntegerEditor], ['D2Ch05NomadVacc', () => Serenity.IntegerEditor], ['D2AbsentRecordDuring', () => Serenity.IntegerEditor], ['D2AbsentFoundVaccDuring', () => Serenity.IntegerEditor], ['D2AbsentVaccDuring', () => Serenity.IntegerEditor], ['D2AbsentRemainDuring', () => Serenity.IntegerEditor], ['D2AbsentRecordAfter', () => Serenity.IntegerEditor], ['D2AbsentFoundVaccAfter', () => Serenity.IntegerEditor], ['D2AbsentVaccAfter', () => Serenity.IntegerEditor], ['D2AbsentRemainAfter', () => Serenity.IntegerEditor], ['D2NssRecord', () => Serenity.IntegerEditor], ['D2NssFoundVacc', () => Serenity.IntegerEditor], ['D2NssVaccinated', () => Serenity.IntegerEditor], ['D2NssReamining', () => Serenity.IntegerEditor], ['D2RefusalRecord', () => Serenity.IntegerEditor], ['D2RefusalFoundVacc', () => Serenity.IntegerEditor], ['D2RefusalVacc', () => Serenity.IntegerEditor], ['D2RefusalRemaining', () => Serenity.IntegerEditor], ['D3VialsRecieved', () => Serenity.IntegerEditor], ['D3VialsReturned', () => Serenity.IntegerEditor], ['D3VaccByTransit', () => Serenity.IntegerEditor], ['D3NoOfHhsVisited', () => Serenity.IntegerEditor], ['D3Ch05resident', () => Serenity.IntegerEditor], ['D3Ch05guest', () => Serenity.IntegerEditor], ['D3Ch05VaccInHouse', () => Serenity.IntegerEditor], ['D3Ch05VaccOutHouse', () => Serenity.IntegerEditor], ['D3Ch05NomadVacc', () => Serenity.IntegerEditor], ['D3AbsentRecordDuring', () => Serenity.IntegerEditor], ['D3AbsentFoundVaccDuring', () => Serenity.IntegerEditor], ['D3AbsentVaccDuring', () => Serenity.IntegerEditor], ['D3AbsentRemainDuring', () => Serenity.IntegerEditor], ['D3AbsentRecordAfter', () => Serenity.IntegerEditor], ['D3AbsentFoundVaccAfter', () => Serenity.IntegerEditor], ['D3AbsentVaccAfter', () => Serenity.IntegerEditor], ['D3AbsentRemainAfter', () => Serenity.IntegerEditor], ['D3NssRecord', () => Serenity.IntegerEditor], ['D3NssFoundVacc', () => Serenity.IntegerEditor], ['D3NssVaccinated', () => Serenity.IntegerEditor], ['D3NssReamining', () => Serenity.IntegerEditor], ['D3RefusalRecord', () => Serenity.IntegerEditor], ['D3RefusalFoundVacc', () => Serenity.IntegerEditor], ['D3RefusalVacc', () => Serenity.IntegerEditor], ['D3RefusalRemaining', () => Serenity.IntegerEditor], ['D5VialsRecieved', () => Serenity.IntegerEditor], ['D5VialsReturned', () => Serenity.IntegerEditor], ['D5RemainAbsentDuring', () => Serenity.IntegerEditor], ['D5AbsentFoundVaccDuring5', () => Serenity.IntegerEditor], ['D5AbsentVaccDuring5', () => Serenity.IntegerEditor], ['D5AbsentRemainDuring5', () => Serenity.IntegerEditor], ['D5RemainAbsentAfter', () => Serenity.IntegerEditor], ['D5AbsentFoundVaccAfter5', () => Serenity.IntegerEditor], ['D5AbsentVaccAfter5', () => Serenity.IntegerEditor], ['D5AbsentRemainAfter5', () => Serenity.IntegerEditor], ['D5RemainNss', () => Serenity.IntegerEditor], ['D5FoundVaccNss5', () => Serenity.IntegerEditor], ['D5VaccNss5', () => Serenity.IntegerEditor], ['D5RemainNss5', () => Serenity.IntegerEditor], ['D5RemainRefusal', () => Serenity.IntegerEditor], ['D5FoundVaccRefusal5', () => Serenity.IntegerEditor], ['D5VaccRefusal5', () => Serenity.IntegerEditor], ['D5RemainRefusal5', () => Serenity.IntegerEditor], ['D5VaccOutofHouse', () => Serenity.IntegerEditor]].forEach(x => Object.defineProperty(AdminDataForm.prototype, <string>x[0], { get: function () { return this.w(x[0], (x[1] as any)()); }, enumerable: true, configurable: true }));
+}
+

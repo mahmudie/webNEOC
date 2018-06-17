@@ -1,0 +1,140 @@
+﻿@using Syncfusion.JavaScript
+@using Syncfusion.MVC.EJ
+@using Syncfusion.EJ.Export
+@{
+    ViewBag.Title = "Intra Campaign";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link href="~/Content/themes/default-theme/ej.web.all.min.css" rel="stylesheet" />
+    <link href="~/Content/themes/default-theme/ej.theme.min.css" rel="stylesheet" />
+    <script src="~/Scripts/ej.web.all.min.js"></script>
+    <script src="~/Scripts/ej.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jsrender.min.js"></script>
+    @Html.Script("~/Scripts/adminlte/app.js")
+    <style>
+        .content {
+            margin-top: 0px !important;
+            padding-top: 0px !important;
+        }
+    </style>
+</head>
+<body style="width:100%;height:100%">
+    <h3><b>INTRA-CAMPAIGN DASHBOARD  </b></h3>
+    <ul class="nav nav-tabs">
+        <li ><a href="/PreCamp">Pre-Campaign</a></li>
+        <li class="active"><a href="/IntraCamp">Intra-Campaign</a></li>
+        <li><a href="/Regional">Administrative Coverage</a></li>
+    </ul>
+    <div style="height:710px!important;width:100%;overflow:auto">
+        @Html.AntiForgeryToken()
+        @(Html.EJ().TreeGrid("TreeGridContainer")
+                 .HeaderTextOverflow(TreeGridHeaderTextOverflow.Wrap)
+                 .TreeColumnIndex(1)
+                 .AllowSorting(true)
+                 .AllowSelection(true)
+                 .AllowColumnReordering(true)
+                 .AllowColumnResize(true)
+                 .AllowMultiSorting(true)
+                 .IsResponsive(true)
+                 .IdMapping("Id")
+                 .AllowFiltering(true)
+                 .ParentIdMapping("ParentId")
+                 .FilterSettings(filter => { filter.FilterType(TreeGridFilterType.Excel); })
+                 .ClientSideEvents(cs => cs.ToolbarClick("toolbarClick"))
+                 .Columns(co =>
+                 {
+                     //co.Field("Id").HeaderText("Id").Width(45).Add();
+                     co.Field("Region").HeaderText("Region").Width(100).AllowFiltering(true).Add();
+                     co.Field("Province").HeaderText("Province").Width(100).AllowFiltering(true).Add();
+                     co.Field("District").HeaderText("District").Width(100).AllowFiltering(true).Add();
+                     co.Field("Round").HeaderText("Round").Width(150).AllowFiltering(true).Add();
+                     co.Field("LPDs").HeaderText("LPDs").Width(80).AllowFiltering(true).Add();
+                     co.Field("Year").HeaderText("Year").Width(80).AllowFiltering(true).Add();
+                     co.Field("percVacTrainedPreCamp").HeaderText("% vaccination teams trained prior the campaign").Width(180).AllowFiltering(true).Add();
+                     co.Field("percResident").HeaderText("% vaccination teams with at least one member resident of the team area (villages)").Width(220).AllowFiltering(true).Add();
+                     co.Field("flwwith1CWH").HeaderText("% FLW teams with at least 1 CHW ").Width(180).AllowFiltering(true).Add();
+                     co.Field("vacBySupervisor").HeaderText("% Vaccination teams monitored by supervisors").Width(180).AllowFiltering(true).Add();
+                     co.Field("teamwithFemale").HeaderText("% Vaccination teams using vaccines stage 3 or 4").Width(180).AllowFiltering(true).Add();
+                 }
+                 )
+                      .ShowColumnChooser(false)
+                      .ShowColumnOptions(false)
+            //            .ColumnDialogFields(new List<TreeGridColumnDialogFields>()
+            //    {
+            //TreeGridColumnDialogFields.Field,
+            //TreeGridColumnDialogFields.HeaderText,
+            //TreeGridColumnDialogFields.EditType,
+            //TreeGridColumnDialogFields.Visible,
+            //TreeGridColumnDialogFields.Width,
+            //TreeGridColumnDialogFields.TextAlign,
+            //TreeGridColumnDialogFields.ShowInColumnChooser
+            //    })
+            .Mappers(map => map.ExportToPdfAction("http://localhost:55262/IntraCamp/ExportToPdf").ExportToExcelAction("http://180.94.89.89:80/IntraCamp/ExportToExcel"))
+                         .ToolbarSettings(tool =>
+                         {
+                             tool.ShowToolbar(true);
+                             tool.ToolbarItems(new List<TreeGridToolBarItems>()
+                     {
+                  TreeGridToolBarItems.ExcelExport,
+                     });
+                         })
+                         .ClientSideEvents(ee =>
+                         {
+                             ee.QueryCellInfo("queryCellInfo");
+                             ee.Load("load");
+                         })
+                 .SizeSettings(ss => ss.Width("100%").Height("100%"))
+                 .Datasource(ViewBag.datasource)
+
+
+        )
+    </div>
+    @(Html.EJ().ScriptManager())
+    <script>
+        function queryCellInfo(args) {
+            if (args.column.field != 'Id' && args.column.field != 'Year' && args.column.field != 'Region' && args.column.field != 'MissedChildren' && args.column.field != 'TargetPop') {
+                if (args.data[args.column.field] > 0 && args.data[args.column.field] < 80.1) {
+                    $(args.cellElement).css({ 'background-color': '#ff3300' });
+                }
+                if (args.data[args.column.field] > 80 && args.data[args.column.field] < 90) {
+                    $(args.cellElement).css({ 'background-color': '#ffff00' });
+                }
+                if (args.data[args.column.field] >= 90) {
+                    $(args.cellElement).css({ 'background-color': '#00CC00' });
+                }
+            }
+
+            function load(args) {
+                args.model.columnDialogFields = ['field', 'headerText', 'editType', 'visible', 'width', 'textAlign', 'showInColumnChooser']; //Declare columnDialogField in load event 
+
+            } 
+        }
+
+        function toolbarClick(args) {
+
+            if (args.itemName == "Excel Export") {
+
+                var modelClone = this._getExportModel(this.model); // Clone TreeGrid model
+
+                var attr = { action: "/IntraCamp/ExportToExcel", method: 'post', "data-ajax": "false" };
+                $('form#' + this._id + 'export').remove();
+                var form = ej.buildTag('form#' + this._id + 'export', "", null, attr);
+                var token = $('input[name="__RequestVerificationToken"]').val();
+                var inputAttr = { name: 'TreeGridModel', type: 'hidden', value: JSON.stringify(modelClone) };
+                var input = ej.buildTag('input', "", null, inputAttr);
+                var tokenInput = ej.buildTag('input', "", null, { name: "__RequestVerificationToken", type: "hidden", value: token });
+                form.append(input);
+
+                form.append(tokenInput);  // append token input element
+                form.append(this);
+                $('body').append(form);
+                form.submit();
+            }
+            args.cancel = true;
+        }
+    </script>
+</body>
+</html>

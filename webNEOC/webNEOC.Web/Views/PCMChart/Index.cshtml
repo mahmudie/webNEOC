@@ -1,0 +1,109 @@
+﻿@using Syncfusion.JavaScript
+@using Syncfusion.MVC.EJ
+@using Syncfusion.EJ.Export
+@{
+    ViewBag.Title = "PCM Monitoring Chart";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link href="~/Content/themes/default-theme/ej.web.all.min.css" rel="stylesheet" />
+    @*<script src="~/Scripts/jquery-1.10.2.min.js"></script>*@
+    <script src="~/Scripts/ej.web.all.min.js"></script>
+    <script src="~/Scripts/ej.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jsrender.min.js"></script>
+    @Html.Script("~/Scripts/adminlte/app.js")
+
+</head>
+<body style="width:100%;height:100%">
+    <div style="height:710px!important;width:100%;overflow:auto">
+        @(Html.EJ().TreeGrid("TreeGridContainer")
+             .TreeColumnIndex(1)
+             .AllowSorting(true)
+             .AllowSelection(true)
+             .AllowColumnReordering(true)
+             .AllowColumnResize(true)
+             .AllowMultiSorting(true)
+             .IsResponsive(true)
+             .IdMapping("Id")
+             .ParentIdMapping("parentId")
+             .Columns(co =>
+             {
+                 co.Field("Id").HeaderText("Id").Width(45).Add();
+                 co.Field("Location").HeaderText("Level").Width(150).Add();
+                 co.Field("Measure").HeaderText("Measure").Width(80).Add();
+                 co.Field("TargetPop").HeaderText("Target").Width(80).Add();
+                 co.Field("NID_201605").HeaderText("NID_201605").Width(120).Add();
+                 co.Field("NID_201608").HeaderText("NID_201608").Width(120).Add();
+                 co.Field("NID_201611").HeaderText("NID_201611").Width(120).Add();
+                 co.Field("NID_201703").HeaderText("NID_201703").Width(120).Add();
+                 co.Field("NID_201705").HeaderText("NID_201705").Width(120).Add();
+                 co.Field("NID_201708").HeaderText("NID_201708").Width(120).Add();
+
+                 co.Field("SNID_201602").HeaderText("SNID_201602").Width(120).Add();
+                 co.Field("SNID_201604").HeaderText("SNID_201604").Width(120).Add();
+                 co.Field("SNID_201611").HeaderText("SNID_201611").Width(120).Add();
+                 co.Field("SNID_201612").HeaderText("SNID_201612").Width(120).Add();
+                 co.Field("SNID_201701").HeaderText("SNID_201701").Width(120).Add();
+                 co.Field("SNID_201702").HeaderText("SNID_201702").Width(120).Add();
+                 co.Field("SNID_201704").HeaderText("SNID_201704").Width(120).Add();
+                 co.Field("SNID_201707").HeaderText("SNID_201707").Width(120).Add();
+             }
+             )
+                  .ShowColumnChooser(true)
+                  .ShowColumnOptions(false)
+        //        .ColumnDialogFields(new List<TreeGridColumnDialogFields>()
+        //{
+        //    TreeGridColumnDialogFields.Field,
+        //    TreeGridColumnDialogFields.HeaderText,
+        //    TreeGridColumnDialogFields.EditType,
+        //    TreeGridColumnDialogFields.Visible,
+        //    TreeGridColumnDialogFields.Width,
+        //    TreeGridColumnDialogFields.TextAlign,
+        //    TreeGridColumnDialogFields.ShowInColumnChooser
+        //})
+        .Mappers(map => map.ExportToPdfAction("http://localhost:58993/PCMChart/ExportToPdf").ExportToExcelAction("http://localhost:58993/PCMChart/ExportToExcel"))
+                     .ToolbarSettings(tool =>
+                     {
+                         tool.ShowToolbar(true);
+                         tool.ToolbarItems(new List<TreeGridToolBarItems>()
+                 {
+                      TreeGridToolBarItems.ExcelExport,
+                      TreeGridToolBarItems.ExpandAll,
+                      TreeGridToolBarItems.CollapseAll
+                 });
+                     })
+                     .ClientSideEvents(ee =>
+                     {
+                         ee.QueryCellInfo("queryCellInfo");
+                         ee.Load("load");
+                     })
+             .SizeSettings(ss => ss.Width("100%").Height("100%"))
+             .Datasource(ViewBag.datasource)
+
+
+        )
+    </div>
+    @(Html.EJ().ScriptManager())
+    <script>
+        function queryCellInfo(args) {
+            if (args.column.field != 'Id' && args.column.field != 'Measure' && args.column.field != 'Location' && args.column.field != 'TargetPop') {
+                if (args.data[args.column.field] > 0 && args.data[args.column.field] < 80.1) {
+                    $(args.cellElement).css({ 'background-color': '#f50505' });
+                }
+                if (args.data[args.column.field] > 80 && args.data[args.column.field] < 90) {
+                    $(args.cellElement).css({ 'background-color': '#d4d40f' });
+                }
+                if (args.data[args.column.field] >= 90) {
+                    $(args.cellElement).css({ 'background-color': '#0ae00a' });
+                }
+            } 
+        }
+
+        function load(args) {
+            args.model.columnDialogFields = ['field', 'headerText', 'editType', 'visible', 'width', 'textAlign', 'showInColumnChooser']; 
+        } 
+    </script>
+</body>
+</html>

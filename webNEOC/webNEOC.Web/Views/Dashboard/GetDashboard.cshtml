@@ -1,0 +1,46 @@
+﻿@{
+    Layout = "";
+}
+@{
+  ViewBag.Title = "Campaign Analysis";
+}
+<link href="~/themes/ej.widgets.core.min.css" rel="stylesheet" />
+<link href="~/themes/default-theme/ej.theme.min.css" rel="stylesheet" />
+<link href="~/themes/default-theme/ej.dashboardViewer.all.min.css" rel="stylesheet" />
+@Html.Script("~/Scripts/adminlte/app.js")
+
+<style>
+    #dashboard {
+        height: 710px!important;
+        width: 100%!important;
+    }
+    iframe
+    {
+        border:none;
+    }
+</style>
+<div style="height:710px!important;width:100%!important;">
+    <iframe src="~/Dash/Dashboard" style="height:100%;width:100%;"></iframe>
+</div>
+
+@{
+    ViewBag.Title = "Main Dashboard";
+}
+<link href="~/themes/ej.widgets.core.min.css" rel="stylesheet" />
+<link href="~/themes/default-theme/ej.theme.min.css" rel="stylesheet" />
+<link href="~/themes/default-theme/ej.dashboardViewer.all.min.css" rel="stylesheet" />
+@Html.Script("~/Scripts/adminlte/app.js")
+
+<style>
+    #dashboard {
+        height: 710px !important;
+        width: 100% !important;
+    }
+
+    iframe {
+        border: none;
+    }
+</style>
+<div style="height:710px!important;width:100%!important;">
+    <iframe src="~/PreCamp" style="height:100%;width:100%;"></iframe>
+</div>

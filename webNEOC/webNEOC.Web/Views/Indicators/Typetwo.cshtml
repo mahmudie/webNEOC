@@ -1,0 +1,227 @@
+﻿
+@model webNEOC.Models.IndicatorsForDistrict
+<br />
+<style>
+    td img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
+<div class="container" style="padding:20px;">
+    <form name="pivotForm" id="pivotForm" class="form-horizontal" style="background-color:white;padding:50px;width:100%">
+        <h2>Pivot Table</h2>
+        <h3>Comparison - location by period</h3>
+        <table id="district" class="table-striped table-bordered table-condensed nowrap margin:50px;" width="100%" cellspacing="0">
+            <tr>
+                <th>Region</th>
+                <td>
+                    @Html.DropDownListFor(model => model.Region, ViewData["RegionList"] as SelectList, new { @class = "form-control" })
+                </td>
+            </tr>
+            <tr>
+                <th>Province</th>
+                <td>
+                    @Html.DropDownList("Province", new List<SelectListItem>()
+                            {
+                                new SelectListItem() { Text= "All", Value = "0" }
+                            }, new { @class = "form-control" })
+                </td>
+            </tr>
+            <tr>
+                <th>District</th>
+                <td>
+                    @Html.DropDownList("District", new List<SelectListItem>()
+                            {
+                                new SelectListItem() { Text= "All", Value = "0" }
+                            }, new { @class = "form-control" })
+                </td>
+            </tr>
+            <tr>
+                <th>Round</th>
+                <td>
+                    @Html.DropDownListFor(model => model.Round, ViewData["RoundList"] as SelectList, new { @class = "form-control" })
+                </td>
+            </tr>
+            <tr>
+                <th>Compare</th>
+                <td>
+                    @{
+                        List<SelectListItem> listItems = new List<SelectListItem>();
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "National",
+                            Value = "1"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Region",
+                            Value = "2"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Province",
+                            Value = "3"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "District",
+                            Value = "4"
+                        });
+                    }
+
+                    @Html.DropDownListFor(model => model.Measure, listItems, new { @class = "form-control" }@*, "-- Select Measure --"*@)
+                </td>
+            </tr>
+            <tr>
+                <th>By</th>
+                <td>
+                    @Html.DropDownList("Year", new List<SelectListItem>()
+                    {
+                        new SelectListItem(){ Text= "Year", Value = "1"},
+                        new SelectListItem(){ Text= "Month", Value = "2"}
+                    }, new { @class = "form-control" })
+                </td>
+            </tr>
+            @*<tr>
+                <th>
+                    Measure
+                </th>
+                <td>
+                    @Html.DropDownList("Filter", new List<SelectListItem>()
+                    {
+                    new SelectListItem() { Text="Percentage",Value="%"},
+                    new SelectListItem() { Text = "Numeric", Value = "#", Selected = true }
+                   }, new { @class = "form-control" })
+                </td>
+            </tr>*@
+            <tr>
+                <td colspan="2">
+                    <div class="form-group">
+                        <div class="col-md-4 col-md-offset-4">
+                            <button id="sendbtn" onclick="send()" class="btn btn-success btn-block">Generate</button>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                   <img src="~/Content/pivot/locper/nationalyear.png" id="pivotimg" class="img-rounded img-responsive" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+<script>
+                function send() {
+                    document.pivotForm.action = "/Indicators/ProvInd";
+                    document.pivotForm.submit();
+                };
+
+
+                //filter areas
+
+          $(document).ready(function () {
+            $('#Region').change(function () {
+                var url = '@Url.Content("~/")' + "Indicators/provinces";
+                var ddlsource = '#Region';
+                $.getJSON(url, { RegionId: $(ddlsource).val() }, function (data) {
+                    var items = '';
+                    $('#Province').empty();
+                    $.each(data, function (i, dist) {
+                        items += "<option value='" + dist.Value + "'>" + dist.Text + "</option>";
+                    });
+                    $('#Province').html(items);
+                });
+            });
+           $('#Province').change(function () {
+               var url = '@Url.Content("~/")' + "Indicators/districts";
+                var ddlsource = '#Province';
+                $.getJSON(url, { ProvinceId: $(ddlsource).val() }, function (data) {
+                    var items = '';
+                    $('#District').empty();
+                    $.each(data, function (i, dist) {
+                        items += "<option value='" + dist.Value + "'>" + dist.Text + "</option>";
+                    });
+                    $('#District').html(items);
+                });
+                });
+
+            $("#Measure").change(function () {
+                var mval = $("#Measure option:selected").text()
+                var period = $("#Year option:selected").text()
+
+                if (mval == "National" & period=="Year") {
+                    $("#Region option[value=0]").prop("selected", true);
+                    $('#pivotimg').attr("src", "../Content/pivot/locper/nationalyear.png");
+                }
+                else if (mval == "National" & period == "Month") {
+                    $("#Region option[value=0]").prop("selected", true);
+                    $('#pivotimg').attr("src", "../Content/pivot/locper/nationalmonth.png");
+                }
+                else if (mval == "Region" & period == "Year") {
+                    $("#Region option[value=0]").prop("selected", true);
+                    $('#pivotimg').attr("src", "../Content/pivot/locper/regionyear.png");
+                }
+                else if (mval == "Region" & period == "Month") {
+                    $("#Region option[value=0]").prop("selected", true);
+                    $('#pivotimg').attr("src", "../Content/pivot/locper/regionmonth.png");
+                }
+                else if (mval == "Province" & period == "Year")
+                {
+                    $("#Province option[value=0]").prop("selected", true);
+                    $('#pivotimg').attr("src", "../Content/pivot/locper/provinceyear.png");
+                }
+                else if (mval == "Province" & period == "Month") {
+                    $("#Province option[value=0]").prop("selected", true);
+                    $('#pivotimg').attr("src", "../Content/pivot/locper/provincemonth.png");
+                }
+                else if (mval == "District" & period == "Year") {
+                    $("#District option[value=0]").prop("selected", true);
+                    $('#pivotimg').attr("src", "../Content/pivot/locper/districtyear.png");
+                }
+                else if (mval == "District" & period == "Month") {
+                    $("#District option[value=0]").prop("selected", true);
+                    $('#pivotimg').attr("src", "../Content/pivot/locper/districtmonth.png");
+                }
+            });
+            $("#Year").change(function () {
+                var mval = $("#Measure option:selected").text()
+                var period = $("#Year option:selected").text()
+
+                if (mval == "National" & period == "Year") {
+                    $("#National option[value=0]").prop("selected", true);
+                    $('#pivotimg').attr("src", "../Content/pivot/locper/nationalyear.png");
+                }
+                else if (mval == "National" & period == "Month") {
+                    $("#National option[value=0]").prop("selected", true);
+                    $('#pivotimg').attr("src", "../Content/pivot/locper/nationalmonth.png");
+                }
+                else if (mval == "Region" & period == "Year") {
+                    $("#Region option[value=0]").prop("selected", true);
+                    $('#pivotimg').attr("src", "../Content/pivot/locper/regionyear.png");
+                }
+                else if (mval == "Region" & period == "Month") {
+                    $("#Region option[value=0]").prop("selected", true);
+                    $('#pivotimg').attr("src", "../Content/pivot/locper/regionmonth.png");
+                }
+                else if (mval == "Province" & period == "Year") {
+                    $("#Province option[value=0]").prop("selected", true);
+                    $('#pivotimg').attr("src", "../Content/pivot/locper/provinceyear.png");
+                }
+                else if (mval == "Province" & period == "Month") {
+                    $("#Province option[value=0]").prop("selected", true);
+                    $('#pivotimg').attr("src", "../Content/pivot/locper/provincemonth.png");
+                }
+                else if (mval == "District" & period == "Year") {
+                    $("#District option[value=0]").prop("selected", true);
+                    $('#pivotimg').attr("src", "../Content/pivot/locper/districtyear.png");
+                }
+                else if (mval == "District" & period == "Month") {
+                    $("#District option[value=0]").prop("selected", true);
+                    $('#pivotimg').attr("src", "../Content/pivot/locper/districtmonth.png");
+                }
+            });
+           });
+
+</script>

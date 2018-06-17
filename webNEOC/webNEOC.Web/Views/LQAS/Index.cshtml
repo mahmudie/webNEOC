@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<form name="pivotForm" id="pivotForm" class="form-horizontal" style="background-color:white;padding:50px;width:100%">
+    <div class="form-group">
+        <div class="col-md-3 col-md-offset-6">
+            <button id="sendbtn" onclick="send()" class="btn btn-success btn-block">Generate Chart</button>
+        </div>
+    </div>
+</form>
+<script>
+    function send() {
+        document.pivotForm.action = "/LQAS/CreateChart";
+        document.pivotForm.submit();
+    };
+</script>
